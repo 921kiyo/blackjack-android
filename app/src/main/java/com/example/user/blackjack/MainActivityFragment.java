@@ -42,6 +42,7 @@ public class MainActivityFragment extends Fragment {
 
 
         }
+        GetterSetter.card = deck;
         return rootView;
     }
 

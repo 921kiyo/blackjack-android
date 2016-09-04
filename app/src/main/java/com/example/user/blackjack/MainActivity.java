@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public void clickMethod(View view){
         textView.setText("Card No:" + cardn + "Suit:" + fragment.deck[cardn].suit + "Rank:" + fragment.deck[cardn].rank);
         cardn++;
+        GetterSetter.currentCard = cardn;
 
     }
     @Override

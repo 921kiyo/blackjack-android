@@ -38,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
     public void clickMethod(View view){
-        textView.setText("Card No:" + cardn + "Suit:" + fragment.deck[cardn].suit + "Rank:" + fragment.deck[cardn].rank);
-        cardn++;
-        GetterSetter.currentCard = cardn;
+        GetterSetter.playerScore  = 0;
+        GetterSetter.hit++;
+        GetterSetter.bottunPressed = 1;
+//        textView.setText("Card No:" + cardn + "Suit:" + fragment.deck[GetterSetter.hit].suit + "Rank:" + fragment.deck[GetterSetter.hit].rank);
+//        cardn++;
+//        GetterSetter.currentCard = cardn;
 
     }
     @Override

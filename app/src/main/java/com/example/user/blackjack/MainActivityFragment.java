@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.os.Handler;
 
 import java.util.Random;
+
 
 /**
  * Created by user on 02/09/2016.
@@ -20,6 +22,7 @@ public class MainActivityFragment extends Fragment {
     int n = 0;
     View rootView;
     TextView textview;
+    Handler mHandler;
 
     public MainActivityFragment(){
 
@@ -43,8 +46,18 @@ public class MainActivityFragment extends Fragment {
 
         }
         GetterSetter.card = deck;
+
+        mHandler = new Handler();
+        mHandler.post(mUpdate);
         return rootView;
     }
+    private Runnable mUpdate = new Runnable() {
+        @Override
+        public void run() {
+            textview.setText("" + GetterSetter.playerScore + "");
+            mHandler.postDelayed(this,1); //???
+        }
+    };
 
 //    public Card[] shuffleDeck(Card[] deck){
 //        Random random = new Random();

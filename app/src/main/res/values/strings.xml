@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">BlackJack</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Hello</string>
+    <string name="header">Welcome to Black Jack</string>
+    <string name="play">Play Game</string>
+    <string name="score">See Score</string>
+    <string name="setting">Setting</string>
 </resources>

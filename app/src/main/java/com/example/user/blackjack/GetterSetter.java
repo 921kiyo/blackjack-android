@@ -7,7 +7,7 @@ public class GetterSetter {
     static int value = 0;
     static Card[] card;
     static int currentCard = 0;
-    static int hit =  1;
+    static int hit =  3;
     static int playerScore  = 0;
     static int dealerScore = 0;
     static int dealerHit = 1;

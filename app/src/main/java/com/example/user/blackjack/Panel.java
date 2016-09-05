@@ -48,26 +48,26 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 //
 //        }
 //        else{
-            for (int n = 0; n <= 1; n++){ // draw first 2 cards for dealer
-               if (n == 0 && GetterSetter.dealerHit < 3){
-                   cardDraw.deal(canvas,501, (80 * n), -200);// draw multiple cards on screen. 700 is ydistance
+            for (int x = 0; x <= 1; x++){ // draw first 2 cards for dealer
+               if (x == 0 && GetterSetter.dealerHit < 3){
+                   cardDraw.deal(canvas,501, (80 * x), -200);// draw back card on screen. -200 is xdistance
                }
                 else{
-                   cardDraw.deal(canvas,n, (80 * n), -200);// draw multiple cards on screen. 700 is ydistance
+                   cardDraw.deal(canvas,x, (80 * x), -200);
                }
                 if (GetterSetter.bottunPressed == 1){ // only after hit button, execute addScore
-                    addScore(n,false,true); // when hit stand, calculate score
+                    addScore(x,false,true); // when hit stand, calculate score
                 }
             }
-            for (int n = 0; n <= 1; n++){ // draw first 2 cards for player
-                cardDraw.deal(canvas,n, (80 * n), 300);// draw multiple cards on screen. 700 is ydistance
+            for (int n = 2; n <= 3; n++){ // draw first 2 cards for player
+                cardDraw.deal(canvas,n, (80 * n), 300);// draw multiple cards on screen. 700 is xdistance
 
                 if (GetterSetter.bottunPressed == 1){ // only after hit button, execute addScore
                     addScore(n,true,false); // when hit stand, calculate score
                 }
             }
 
-            for (int n = 2; n <=GetterSetter.hit; n++ ){ // after first 2 cards for player, calculate sum of score
+            for (int n = 4; n <=GetterSetter.hit; n++ ){ // after first 2 cards for player, calculate sum of score
                 cardDraw.deal(canvas,n, (80 * n), 300);
                 if (GetterSetter.bottunPressed == 1){
                     addScore(n,true,false);
@@ -75,7 +75,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             for (int x = (GetterSetter.hit + 1); x <= GetterSetter.dealerHit; x++){ /// when hit stand button,
-                cardDraw.deal(canvas,x, (80 * x), 300);
+                cardDraw.deal(canvas,x, (80 * x), -200);
                 if (GetterSetter.bottunPressed == 1){
                     addScore(x,false,true);
                 }

@@ -41,10 +41,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickMethodHit(View view){ // Hit button
-        GetterSetter.playerScore  = 0;
-        GetterSetter.dealerScore = 0;
-        GetterSetter.hit++;
-        GetterSetter.bottunPressed = 1;
+        if(GetterSetter.isStanding == false){
+            GetterSetter.playerScore  = 0;
+            GetterSetter.dealerScore = 0;
+            GetterSetter.hit++;
+            GetterSetter.bottunPressed = 1;
+        }
+
     }
     public void clickMethodStand(View view){ // stand button
         GetterSetter.playerScore = 0;
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     public void clickMethodRedeal(View view){ // redeal button
         GetterSetter.playerScore = 0;
         GetterSetter.dealerScore = 0;
-        GetterSetter.hit = 1;
+        GetterSetter.hit = 3;
         GetterSetter.dealerHit = 1;
         GetterSetter.bottunPressed = 1;
         GetterSetter.isStanding = false;

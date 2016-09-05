@@ -187,7 +187,7 @@ public class CardDraw {
 
     public void deal(Canvas canvas, int cardnum, int xdistance,int ydistance){
         getCanvasDimentions(canvas);
-        if(cardnum == 501){ //???
+        if(cardnum == 501){ //setting back card, 501 is an extreme number out of 52 cards
             canvas.drawBitmap(back,(x/2) - 500 + xdistance, (y/2) + ydistance, null);
         }else{
             if (GetterSetter.card[cardnum].suit == 0){

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
@@ -41,25 +42,66 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void onDraw(Canvas canvas){ // this triggers animation(execute over and over again)!!!
-        for (int n = 0; n <= GetterSetter.hit; n++){
-            cardDraw.deal(canvas,n, (80 * n), 700);// draw multiple cards on screen. 700 is ydistance
-            if (GetterSetter.bottunPressed == 1){
-                addScore(n);
+        canvas.drawColor(Color.BLACK);
+//        if (GetterSetter.startHand == 0){
+//            // do nothing unless you start
+//
+//        }
+//        else{
+            for (int n = 0; n <= 1; n++){ // draw first 2 cards for dealer
+               if (n == 0 && GetterSetter.dealerHit < 3){
+                   cardDraw.deal(canvas,501, (80 * n), -200);// draw multiple cards on screen. 700 is ydistance
+               }
+                else{
+                   cardDraw.deal(canvas,n, (80 * n), -200);// draw multiple cards on screen. 700 is ydistance
+               }
+                if (GetterSetter.bottunPressed == 1){ // only after hit button, execute addScore
+                    addScore(n,false,true); // when hit stand, calculate score
+                }
             }
-        }
-        GetterSetter.bottunPressed = 0;
+            for (int n = 0; n <= 1; n++){ // draw first 2 cards for player
+                cardDraw.deal(canvas,n, (80 * n), 300);// draw multiple cards on screen. 700 is ydistance
 
+                if (GetterSetter.bottunPressed == 1){ // only after hit button, execute addScore
+                    addScore(n,true,false); // when hit stand, calculate score
+                }
+            }
+
+            for (int n = 2; n <=GetterSetter.hit; n++ ){ // after first 2 cards for player, calculate sum of score
+                cardDraw.deal(canvas,n, (80 * n), 300);
+                if (GetterSetter.bottunPressed == 1){
+                    addScore(n,true,false);
+                }
+            }
+
+            for (int x = (GetterSetter.hit + 1); x <= GetterSetter.dealerHit; x++){ /// when hit stand button,
+                cardDraw.deal(canvas,x, (80 * x), 300);
+                if (GetterSetter.bottunPressed == 1){
+                    addScore(x,false,true);
+                }
+            }
+
+            GetterSetter.bottunPressed = 0;
     }
 
-    public void addScore(int n ){
-        if(GetterSetter.card[n].rank >= 8){
-            localScore = 10;
+    public void addScore(int n, boolean player,boolean dealer){
+        if(n == 0 && GetterSetter.dealerHit < 3) {
+            localScore = 0;
+        }else{
+            // need to deal with ace case here
+            if(GetterSetter.card[n].rank >= 8){ /// if rank is 10, jack, queen and king, then give 10 as score
+                localScore = 10;
+            }
+            else{
+                localScore = GetterSetter.card[n].rank + 2; // I think I can refactor this later
+            }
+            if (player){
+                GetterSetter.playerScore  = GetterSetter.playerScore + localScore;
+            }
+            if (dealer){
+                GetterSetter.dealerScore  = GetterSetter.dealerScore + localScore;
+            }
         }
-        else{
-            localScore = GetterSetter.card[n].rank + 2; // I think I can refactor this later
-        }
-
-        GetterSetter.playerScore  = GetterSetter.playerScore + localScore;
 
     }
 

@@ -9,6 +9,12 @@ public class GetterSetter {
     static int currentCard = 0;
     static int hit =  1;
     static int playerScore  = 0;
+    static int dealerScore = 0;
+    static int dealerHit = 1;
     static int bottunPressed  = 1;
+    static boolean isStanding = false;
+    static int cash = 1000;
+    static int bet = 0;
+    static int startHand = 0;
 
 }

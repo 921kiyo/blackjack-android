@@ -12,6 +12,8 @@ public class CardDraw {
 
     int x;
     int y;
+    Bitmap back; // back card
+
     Bitmap twoclubs;
     Bitmap threeclubs;
     Bitmap fourclubs;
@@ -66,6 +68,9 @@ public class CardDraw {
     Bitmap acediamonds;
 
     public CardDraw(Context context){
+        back = BitmapFactory.decodeResource(context.getResources(), R.drawable.back);
+        back = Bitmap.createScaledBitmap(back,back.getWidth()/4,back.getHeight()/4,false);
+
         twoclubs = BitmapFactory.decodeResource(context.getResources(), R.drawable.two_of_clubs);
         twoclubs = Bitmap.createScaledBitmap(twoclubs,twoclubs.getWidth()/4,twoclubs.getHeight()/4,false); // adjusting scale
         threeclubs = BitmapFactory.decodeResource(context.getResources(), R.drawable.three_of_clubs);
@@ -181,174 +186,181 @@ public class CardDraw {
     }
 
     public void deal(Canvas canvas, int cardnum, int xdistance,int ydistance){
-        if (GetterSetter.card[cardnum].suit == 0){
+        getCanvasDimentions(canvas);
+        if(cardnum == 501){ //???
+            canvas.drawBitmap(back,(x/2) - 500 + xdistance, (y/2) + ydistance, null);
+        }else{
+            if (GetterSetter.card[cardnum].suit == 0){
 
-            if (GetterSetter.card[cardnum].rank == 0){
-                canvas.drawBitmap(twoclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null); // float left, float top
+                if (GetterSetter.card[cardnum].rank == 0){
+                    canvas.drawBitmap(twoclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null); // float left, float top
+                }
+                if (GetterSetter.card[cardnum].rank == 1){
+                    canvas.drawBitmap(threeclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 2){
+                    canvas.drawBitmap(fourclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 3){
+                    canvas.drawBitmap(fiveclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 4){
+                    canvas.drawBitmap(sixclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 5){
+                    canvas.drawBitmap(sevenclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 6){
+                    canvas.drawBitmap(eightclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 7){
+                    canvas.drawBitmap(nineclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 8){
+                    canvas.drawBitmap(tenclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 9){
+                    canvas.drawBitmap(jackclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 10){
+                    canvas.drawBitmap(queenclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 11){
+                    canvas.drawBitmap(kingclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 12){
+                    canvas.drawBitmap(aceclubs,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
             }
-            if (GetterSetter.card[cardnum].rank == 1){
-                canvas.drawBitmap(threeclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
+            if (GetterSetter.card[cardnum].suit == 1){
+                if (GetterSetter.card[cardnum].rank == 0){
+                    canvas.drawBitmap(twohearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null); // float left, float top
+                }
+                if (GetterSetter.card[cardnum].rank == 1){
+                    canvas.drawBitmap(threehearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 2){
+                    canvas.drawBitmap(fourhearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 3){
+                    canvas.drawBitmap(fivehearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 4){
+                    canvas.drawBitmap(sixhearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 5){
+                    canvas.drawBitmap(sevenhearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 6){
+                    canvas.drawBitmap(eighthearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 7){
+                    canvas.drawBitmap(ninehearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 8){
+                    canvas.drawBitmap(tenhearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 9){
+                    canvas.drawBitmap(jackhearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 10){
+                    canvas.drawBitmap(queenhearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 11){
+                    canvas.drawBitmap(kinghearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 12){
+                    canvas.drawBitmap(acehearts,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+
             }
-            if (GetterSetter.card[cardnum].rank == 2){
-                canvas.drawBitmap(fourclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
+            if (GetterSetter.card[cardnum].suit == 2){
+                if (GetterSetter.card[cardnum].rank == 0){
+                    canvas.drawBitmap(twospades,(x/2) - 500 + xdistance,(y/2) + ydistance, null); // float left, float top
+                }
+                if (GetterSetter.card[cardnum].rank == 1){
+                    canvas.drawBitmap(threespades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 2){
+                    canvas.drawBitmap(fourspades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 3){
+                    canvas.drawBitmap(fivespades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 4){
+                    canvas.drawBitmap(sixspades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 5){
+                    canvas.drawBitmap(sevenspades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 6){
+                    canvas.drawBitmap(eightspades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 7){
+                    canvas.drawBitmap(ninespades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 8){
+                    canvas.drawBitmap(tenspades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 9){
+                    canvas.drawBitmap(jackspades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 10){
+                    canvas.drawBitmap(queenspades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 11){
+                    canvas.drawBitmap(kingspades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 12){
+                    canvas.drawBitmap(acespades,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+
             }
-            if (GetterSetter.card[cardnum].rank == 3){
-                canvas.drawBitmap(fiveclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 4){
-                canvas.drawBitmap(sixclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 5){
-                canvas.drawBitmap(sevenclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 6){
-                canvas.drawBitmap(eightclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 7){
-                canvas.drawBitmap(nineclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 8){
-                canvas.drawBitmap(tenclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 9){
-                canvas.drawBitmap(jackclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 10){
-                canvas.drawBitmap(queenclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 11){
-                canvas.drawBitmap(kingclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 12){
-                canvas.drawBitmap(aceclubs,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-        }
-        if (GetterSetter.card[cardnum].suit == 1){
-            if (GetterSetter.card[cardnum].rank == 0){
-                canvas.drawBitmap(twohearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null); // float left, float top
-            }
-            if (GetterSetter.card[cardnum].rank == 1){
-                canvas.drawBitmap(threehearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 2){
-                canvas.drawBitmap(fourhearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 3){
-                canvas.drawBitmap(fivehearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 4){
-                canvas.drawBitmap(sixhearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 5){
-                canvas.drawBitmap(sevenhearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 6){
-                canvas.drawBitmap(eighthearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 7){
-                canvas.drawBitmap(ninehearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 8){
-                canvas.drawBitmap(tenhearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 9){
-                canvas.drawBitmap(jackhearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 10){
-                canvas.drawBitmap(queenhearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 11){
-                canvas.drawBitmap(kinghearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 12){
-                canvas.drawBitmap(acehearts,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
+            if (GetterSetter.card[cardnum].suit == 3){
+                if (GetterSetter.card[cardnum].rank == 0){
+                    canvas.drawBitmap(twodiamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null); // float left, float top
+                }
+                if (GetterSetter.card[cardnum].rank == 1){
+                    canvas.drawBitmap(threediamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 2){
+                    canvas.drawBitmap(fourdiamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 3){
+                    canvas.drawBitmap(fivediamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 4){
+                    canvas.drawBitmap(sixdiamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 5){
+                    canvas.drawBitmap(sevendiamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 6){
+                    canvas.drawBitmap(eightdiamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 7){
+                    canvas.drawBitmap(ninediamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 8){
+                    canvas.drawBitmap(tendiamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 9){
+                    canvas.drawBitmap(jackdiamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 10){
+                    canvas.drawBitmap(queendiamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 11){
+                    canvas.drawBitmap(kingdiamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
+                if (GetterSetter.card[cardnum].rank == 12){
+                    canvas.drawBitmap(acediamonds,(x/2) - 500 + xdistance,(y/2) + ydistance, null);
+                }
             }
 
         }
-        if (GetterSetter.card[cardnum].suit == 2){
-            if (GetterSetter.card[cardnum].rank == 0){
-                canvas.drawBitmap(twospades,(x/2) - 100 + xdistance,(y/2) + ydistance, null); // float left, float top
-            }
-            if (GetterSetter.card[cardnum].rank == 1){
-                canvas.drawBitmap(threespades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 2){
-                canvas.drawBitmap(fourspades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 3){
-                canvas.drawBitmap(fivespades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 4){
-                canvas.drawBitmap(sixspades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 5){
-                canvas.drawBitmap(sevenspades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 6){
-                canvas.drawBitmap(eightspades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 7){
-                canvas.drawBitmap(ninespades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 8){
-                canvas.drawBitmap(tenspades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 9){
-                canvas.drawBitmap(jackspades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 10){
-                canvas.drawBitmap(queenspades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 11){
-                canvas.drawBitmap(kingspades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 12){
-                canvas.drawBitmap(acespades,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
 
-        }
-        if (GetterSetter.card[cardnum].suit == 3){
-            if (GetterSetter.card[cardnum].rank == 0){
-                canvas.drawBitmap(twodiamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null); // float left, float top
-            }
-            if (GetterSetter.card[cardnum].rank == 1){
-                canvas.drawBitmap(threediamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 2){
-                canvas.drawBitmap(fourdiamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 3){
-                canvas.drawBitmap(fivediamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 4){
-                canvas.drawBitmap(sixdiamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 5){
-                canvas.drawBitmap(sevendiamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 6){
-                canvas.drawBitmap(eightdiamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 7){
-                canvas.drawBitmap(ninediamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 8){
-                canvas.drawBitmap(tendiamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 9){
-                canvas.drawBitmap(jackdiamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 10){
-                canvas.drawBitmap(queendiamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 11){
-                canvas.drawBitmap(kingdiamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
-            if (GetterSetter.card[cardnum].rank == 12){
-                canvas.drawBitmap(acediamonds,(x/2) - 100 + xdistance,(y/2) + ydistance, null);
-            }
 
-        }
     }
 
 

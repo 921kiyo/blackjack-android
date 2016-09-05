@@ -5,6 +5,7 @@ import android.os.Bundle;
 //import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
@@ -27,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        button = (Button)findViewById(R.id.button2);
         fragmentManager = getSupportFragmentManager(); //get fragment manager to create transactions for adding, removing and replacing fragments
         fragment = (MainActivityFragment)fragmentManager.findFragmentById(R.id.fragment);
-        textView = fragment.textview;
+        textView = fragment.textviewPlayer;
     }
 
     @Override
@@ -37,15 +39,31 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-    public void clickMethod(View view){
+
+    public void clickMethodHit(View view){ // Hit button
         GetterSetter.playerScore  = 0;
+        GetterSetter.dealerScore = 0;
         GetterSetter.hit++;
         GetterSetter.bottunPressed = 1;
-//        textView.setText("Card No:" + cardn + "Suit:" + fragment.deck[GetterSetter.hit].suit + "Rank:" + fragment.deck[GetterSetter.hit].rank);
-//        cardn++;
-//        GetterSetter.currentCard = cardn;
+    }
+    public void clickMethodStand(View view){ // stand button
+        GetterSetter.playerScore = 0;
+        GetterSetter.dealerScore = 0;
+        GetterSetter.dealerHit = GetterSetter.hit; // when stand pressed, assign dealerHit to be equal to hit
+        GetterSetter.bottunPressed = 1;
+        GetterSetter.isStanding = true;
+    }
+
+    public void clickMethodRedeal(View view){ // redeal button
+        GetterSetter.playerScore = 0;
+        GetterSetter.dealerScore = 0;
+        GetterSetter.hit = 1;
+        GetterSetter.dealerHit = 1;
+        GetterSetter.bottunPressed = 1;
+        GetterSetter.isStanding = false;
 
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent){
         return true;

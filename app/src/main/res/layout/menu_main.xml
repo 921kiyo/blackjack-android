@@ -8,20 +8,33 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"/>
     <TextView
+        android:id="@+id/betTotal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/header"/>
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="Cash Total:£0"/>
+    <TextView
+        android:id="@+id/cashTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Bet Total:£1000"
+        android:layout_below="@+id/fifty"
+        android:layout_alignLeft="@+id/betTotal"
+        android:layout_alignStart="@+id/betTotal" />
     <Button
         android:id="@+id/one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:onClick="plusOne"
         android:text="1"/>
     <Button
         android:id="@+id/five"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:onClick="plusFive"
         android:layout_below="@id/one"
         android:text="5"/>
     <Button
@@ -29,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:onClick="plusFifty"
         android:text="50"/>
     <Button
         android:id="@+id/hundred"
@@ -36,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/fifty"
         android:layout_alignParentRight="true"
+        android:onClick="plusHundred"
         android:text="100"/>
     <Button
         android:id="@+id/five_hundred"
@@ -43,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/hundred"
         android:layout_alignParentRight="true"
+        android:onClick="plusFiveHundred"
         android:text="500"/>
 
     <Button
@@ -51,14 +67,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:onClick="clearBet"
         android:text="Clear"/>
-    <Button
-        android:id="@+id/rebet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@id/clear"
-        android:text="Rebet"/>
+    <!--<Button-->
+        <!--android:id="@+id/rebet"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_toLeftOf="@id/clear"-->
+        <!--android:text="Rebet"/>-->
     <Button
         android:id="@+id/deal"
         android:layout_width="wrap_content"

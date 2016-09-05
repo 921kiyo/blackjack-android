@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.os.Handler;
 
@@ -27,7 +26,6 @@ public class MainActivityFragment extends Fragment {
     TextView textviewCash;
     TextView textviewBet;
     Handler mHandler;
-    SeekBar seekBar;
 
     public MainActivityFragment(){
 
@@ -74,7 +72,7 @@ public class MainActivityFragment extends Fragment {
             if(GetterSetter.playerScore <= 21){
                 textviewPlayer.setText("Player: " + GetterSetter.playerScore + " ");
                 textviewDealer.setText("Dealer: " + GetterSetter.dealerScore + " ");
-                textviewCash.setText("Cash: " + GetterSetter.cash + " ");
+                textviewCash.setText("Cash: " + (GetterSetter.cash - GetterSetter.bet) + " ");
                 textviewBet.setText("Bet: " + GetterSetter.bet + " ");
             }
             else{

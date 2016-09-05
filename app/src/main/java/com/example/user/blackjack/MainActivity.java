@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         GetterSetter.dealerHit = 1;
         GetterSetter.bottunPressed = 1;
         GetterSetter.isStanding = false;
-        // TODO:reshuffle deck here
+        fragment.shuffleDeck(GetterSetter.card);
 
     }
 

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.os.Handler;
 
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -56,10 +57,9 @@ public class MainActivityFragment extends Fragment {
                 deck[n] = new Card(suit,rank);
                 n++;
             }
-
-
         }
         GetterSetter.card = deck;
+        deck = shuffleDeck(deck);
 
         mHandler = new Handler();
         mHandler.post(mUpdate);
@@ -113,8 +113,17 @@ public class MainActivityFragment extends Fragment {
         }
     }
 
-//    public Card[] shuffleDeck(Card[] deck){
-//        Random random = new Random();
-//    }
+    public Card[] shuffleDeck(Card[] deck){
+        Random random = new Random();
+        Card cardHolder = new Card(0,0);
+        for (int n = 0; n <52; n++){
+            int randomIndex = random.nextInt(52);
+            cardHolder = deck[randomIndex]; // assign randomth card to the first card(cardHolder)
+            deck[randomIndex] = deck[n]; // assign the first card to randomth card (swapping the two cards)
+            deck[n] = cardHolder;
+
+        }
+        return deck;
+    }
 
 }

@@ -151,7 +151,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
                 canvasthread.join();//??
                 retry = false;
             }
-            catch(InterruptedException exception){ //??
+            catch(InterruptedException exception){
 
             }
         }

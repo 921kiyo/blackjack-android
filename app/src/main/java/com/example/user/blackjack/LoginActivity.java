@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 String name = mEditText.getText().toString();
-                Log.d("Pontoon", "onClick is called. The name was " + name);
 
                 Intent intent = new Intent(LoginActivity.this, StartActivity.class);
                 intent.putExtra("name", name);

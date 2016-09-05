@@ -43,11 +43,6 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void onDraw(Canvas canvas){ // this triggers animation(execute over and over again)!!!
         canvas.drawColor(Color.BLACK);
-//        if (GetterSetter.startHand == 0){
-//            // do nothing unless you start
-//
-//        }
-//        else{
             for (int x = 0; x <= 1; x++){ // draw first 2 cards for dealer
                if (x == 0 && GetterSetter.dealerHit < 3){
                    cardDraw.deal(canvas,501, (80 * x), -200);// draw back card on screen. -200 is xdistance
@@ -89,12 +84,32 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
             localScore = 0;
         }else{
             // need to deal with ace case here
-            if(GetterSetter.card[n].rank >= 8){ /// if rank is 10, jack, queen and king, then give 10 as score
+            if(GetterSetter.card[n].rank >= 8 && GetterSetter.card[n].rank < 12){ /// if rank is 10, jack, queen and king, then give 10 as score
                 localScore = 10;
             }
-            else{
+            if(GetterSetter.card[n].rank == 12){
+                if(player){
+                    if(GetterSetter.playerScore > 10){
+                        localScore = 1;
+                    }
+                    else{
+                        localScore = 11;
+                    }
+                }
+                if(dealer){
+                    if(GetterSetter.dealerScore > 10){
+                        localScore = 1;
+                    }
+                    else{
+                        localScore = 11;
+                    }
+                }
+
+            }
+            if (GetterSetter.card[n].rank < 8){ // less than 10
                 localScore = GetterSetter.card[n].rank + 2; // I think I can refactor this later
             }
+
             if (player){
                 GetterSetter.playerScore  = GetterSetter.playerScore + localScore;
             }

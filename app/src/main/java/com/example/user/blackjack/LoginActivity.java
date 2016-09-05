@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
                 String name = mEditText.getText().toString();
                 Log.d("Pontoon", "onClick is called. The name was " + name);
 
-                Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                Intent intent = new Intent(LoginActivity.this, StartActivity.class);
                 intent.putExtra("name", name);
                 startActivity(intent);
             }

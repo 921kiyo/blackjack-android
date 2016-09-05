@@ -72,12 +72,12 @@ public class MainActivityFragment extends Fragment {
             if(GetterSetter.playerScore <= 21){
                 textviewPlayer.setText("Player: " + GetterSetter.playerScore + " ");
                 textviewDealer.setText("Dealer: " + GetterSetter.dealerScore + " ");
-                textviewCash.setText("Cash: " + (GetterSetter.cash - GetterSetter.bet) + " ");
+                textviewCash.setText("Cash: " + (GetterSetter.cash) + " ");
                 textviewBet.setText("Bet: " + GetterSetter.bet + " ");
             }
             else{
                 textviewPlayer.setText("Bust!");
-                // Reset betting amount here
+                GetterSetter.bet = 0; // reset bet amount
                 GetterSetter.isStanding = true;
             }
 
@@ -104,9 +104,12 @@ public class MainActivityFragment extends Fragment {
     public void judgeWin(){
         if(GetterSetter.playerScore > GetterSetter.dealerScore || GetterSetter.dealerScore > 21){
             // Player win!!
+            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
+            GetterSetter.bet = 0;
         }
         else{
             // Dealer win! take betting amount
+            GetterSetter.bet = 0;
         }
     }
 

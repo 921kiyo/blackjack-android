@@ -55,7 +55,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
                 }
             }
             for (int n = 2; n <= 3; n++){ // draw first 2 cards for player
-                cardDraw.deal(canvas,n, (80 * n), 300);// draw multiple cards on screen. 700 is xdistance
+                cardDraw.deal(canvas,n, (80 * n), 250);// draw multiple cards on screen. 700 is xdistance
 
                 if (GetterSetter.bottunPressed == 1){ // only after hit button, execute addScore
                     addScore(n,true,false); // when hit stand, calculate score
@@ -63,10 +63,20 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             for (int n = 4; n <=GetterSetter.hit; n++ ){ // after first 2 cards for player, calculate sum of score
-                cardDraw.deal(canvas,n, (80 * n), 300);
-                if (GetterSetter.bottunPressed == 1){
-                    addScore(n,true,false);
+
+                if(GetterSetter.horizontalMove < 81){ // keep looping this statement untile horizantalMove hits 80
+                    GetterSetter.horizontalMove = GetterSetter.horizontalMove + 4;
+                    GetterSetter.verticalMove = GetterSetter.verticalMove - 20;
                 }
+                if(GetterSetter.verticalMove <= 250){
+                    GetterSetter.verticalMove = 250;
+                }
+                cardDraw.deal(canvas,n, (GetterSetter.horizontalMove * n), GetterSetter.verticalMove);
+
+                if (GetterSetter.bottunPressed == 1){
+                    addScore(n, true, false);
+                }
+
             }
 
             for (int x = (GetterSetter.hit + 1); x <= GetterSetter.dealerHit; x++){ /// when hit stand button,
@@ -80,7 +90,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void addScore(int n, boolean player,boolean dealer){
-        if(n == 0 && GetterSetter.dealerHit < 3) {
+        if(n == 0 && GetterSetter.dealerHit < 3) { // when player has not clicked stand
             localScore = 0;
         }else{
             // need to deal with ace case here

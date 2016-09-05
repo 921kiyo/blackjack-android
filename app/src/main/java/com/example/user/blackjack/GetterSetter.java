@@ -16,5 +16,8 @@ public class GetterSetter {
     static int cash = 1000;
     static int bet = 0;
     static int startHand = 0;
+    static int horizontalMove = 0;
+    static int verticalMove = 400;
+
 
 }

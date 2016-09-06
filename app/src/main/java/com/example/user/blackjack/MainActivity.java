@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by user on 02/09/2016.
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickMethodDouble(View view){
         if(GetterSetter.isDouble == 1){
+            Toast.makeText(MainActivity.this, "You cannot double twice", Toast.LENGTH_SHORT).show();
 
         }
         else{

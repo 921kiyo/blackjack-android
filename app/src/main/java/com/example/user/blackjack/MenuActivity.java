@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by user on 05/09/2016.
@@ -23,7 +24,13 @@ public class MenuActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuActivity.this, MainActivity.class);
-                startActivity(intent);
+                if(GetterSetter.bet == 0){
+                    Toast.makeText(MenuActivity.this, "Please add your bet", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    startActivity(intent);
+                }
+
             }
         });
     }

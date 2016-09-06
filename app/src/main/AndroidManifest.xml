@@ -19,10 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".StartActivity"
+        <activity android:name=".MenuActivity"
             android:label="Start Menu">
         </activity>
-        <activity android:name=".MenuActivity"
+        <activity android:name=".BettingActivity"
             android:label="Menu">
         </activity>
 

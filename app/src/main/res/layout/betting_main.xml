@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/greenboard">
+    android:background="@drawable/casino_table">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,49 +18,53 @@
         android:id="@+id/cashTotal"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="Bet Total:£1000"
+        android:text="Bet Total:£3000"
         android:layout_below="@+id/fifty"
         android:layout_alignLeft="@+id/betTotal"
         android:layout_alignStart="@+id/betTotal" />
-    <Button
+    <ImageButton
         android:id="@+id/one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:onClick="plusOne"
-        android:text="1"/>
-    <Button
+        android:background="@null"
+        android:src="@drawable/chip_one"
+        android:onClick="plusOne" />
+    <ImageButton
         android:id="@+id/five"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:background="@null"
+        android:src="@drawable/chip_five"
         android:onClick="plusFive"
-        android:layout_below="@id/one"
-        android:text="5"/>
-    <Button
+        android:layout_below="@id/one" />
+    <ImageButton
+        android:id="@+id/twenty_five"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/five"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:src="@drawable/chip_twenty_five"
+        android:onClick="plusTwentyFive" />
+    <ImageButton
         android:id="@+id/fifty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:onClick="plusFifty"
-        android:text="50"/>
-    <Button
+        android:background="@null"
+        android:src="@drawable/chip_fifty"
+        android:onClick="plusFifty" />
+    <ImageButton
         android:id="@+id/hundred"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/fifty"
         android:layout_alignParentRight="true"
-        android:onClick="plusHundred"
-        android:text="100"/>
-    <Button
-        android:id="@+id/five_hundred"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/hundred"
-        android:layout_alignParentRight="true"
-        android:onClick="plusFiveHundred"
-        android:text="500"/>
-
+        android:background="@null"
+        android:src="@drawable/chip_hundred"
+        android:onClick="plusHundred" />
     <Button
         android:id="@+id/clear"
         android:layout_width="wrap_content"
@@ -69,13 +73,6 @@
         android:layout_alignParentBottom="true"
         android:onClick="clearBet"
         android:text="Clear"/>
-    <!--<Button-->
-        <!--android:id="@+id/rebet"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_toLeftOf="@id/clear"-->
-        <!--android:text="Rebet"/>-->
     <Button
         android:id="@+id/deal"
         android:layout_width="wrap_content"

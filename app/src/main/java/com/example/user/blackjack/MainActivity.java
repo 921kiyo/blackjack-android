@@ -64,8 +64,22 @@ public class MainActivity extends AppCompatActivity {
         GetterSetter.dealerHit = 1;
         GetterSetter.bottunPressed = 1;
         GetterSetter.isStanding = false;
+        GetterSetter.isDouble = 0;
         fragment.shuffleDeck(GetterSetter.card);
+    }
 
+    public void clickMethodDouble(View view){
+        if(GetterSetter.isDouble == 1){
+
+        }
+        else{
+            GetterSetter.playerScore  = 0;
+            GetterSetter.dealerScore = 0;
+            GetterSetter.hit++;
+            GetterSetter.bottunPressed = 1;
+            GetterSetter.isDouble = 1;
+            GetterSetter.bet = GetterSetter.bet * 2;
+        }
     }
 
     @Override

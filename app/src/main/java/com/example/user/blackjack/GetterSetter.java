@@ -4,7 +4,6 @@ package com.example.user.blackjack;
  * Created by user on 03/09/2016.
  */
 public class GetterSetter {
-    static int value = 0;
     static Card[] card;
     static int hit =  3;
     static int playerScore  = 0;
@@ -14,9 +13,10 @@ public class GetterSetter {
     static boolean isStanding = false;
     static int cash = 3000;
     static int bet = 0;
-    static int startHand = 0;
     static int horizontalMove = 0;
     static int verticalMove = 400;
+    static int isDouble = 0;
+    static int doubleAmount = 0;
 
 
 }

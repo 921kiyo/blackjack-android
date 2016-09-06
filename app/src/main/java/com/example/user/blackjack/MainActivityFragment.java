@@ -1,5 +1,8 @@
 package com.example.user.blackjack;
 
+import android.app.AlertDialog;
+import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment; // part of activity you can use over and over again (reusable)
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.Handler;
 import android.widget.Toast;
@@ -28,8 +32,12 @@ public class MainActivityFragment extends Fragment {
     TextView textviewCash;
     TextView textviewBet;
     Handler mHandler;
+    MediaPlayer mp;
+    AlertDialog.Builder sample;
+    ImageView image;
 
     public MainActivityFragment(){
+
 
     }
 
@@ -66,6 +74,20 @@ public class MainActivityFragment extends Fragment {
         mHandler.post(mUpdate);
         return rootView;
     }
+
+//    private void playSound(int sound){
+//        if (mp != null){
+//            if (mp.isPlaying()||mp.isLooping()) {
+//                mp.stop();
+//            }
+//            mp.release();
+//            mp = null;
+//        }
+//        mp = MediaPlayer.create(this,sound);
+//        mp.start();
+//    }
+
+
     private Runnable mUpdate = new Runnable() {
         @Override
         public void run() {
@@ -75,6 +97,7 @@ public class MainActivityFragment extends Fragment {
                 textviewDealer.setText("Dealer: " + GetterSetter.dealerScore + " ");
                 textviewCash.setText("Cash: " + (GetterSetter.cash) + " ");
                 textviewBet.setText("Bet: " + GetterSetter.bet +  " ");
+                GetterSetter.isBlackJack = true;
                 GetterSetter.isStanding = true;
             }
 
@@ -118,6 +141,8 @@ public class MainActivityFragment extends Fragment {
     };
 
 
+
+
     public void judgeWin(){
         if (GetterSetter.dealerScore > 21){
             textviewDealer.setText("Bust!");
@@ -151,5 +176,8 @@ public class MainActivityFragment extends Fragment {
         }
         return deck;
     }
+
+
+
 
 }

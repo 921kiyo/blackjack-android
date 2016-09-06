@@ -1,19 +1,21 @@
 package com.example.user.blackjack;
 
-import android.media.AudioTrack;
+import android.app.*;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 //import android.support.design.widget.FloatingActionButton;
 //import android.support.design.widget.Snackbar;
-import android.provider.MediaStore;
+import android.os.CountDownTimer;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +26,14 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     FragmentManager fragmentManager;// Return the FragmentManager for interacting with fragments associated with this activity.
     MainActivityFragment fragment;
-    int n = 0;
     TextView textView = null;
-    int cardn  = 0;
     MediaPlayer mp;
+    AlertDialog.Builder sample;
+    ImageView image;
+    MediaPlayer backgroundMusic;
 
 
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -38,6 +41,17 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager(); //get fragment manager to create transactions for adding, removing and replacing fragments
         fragment = (MainActivityFragment)fragmentManager.findFragmentById(R.id.fragment);
         textView = fragment.textviewPlayer;
+        backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
+        backgroundMusic.setLooping(true);
+        backgroundMusic.start();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        backgroundMusic.release();
+        finish();
+
     }
 
     @Override
@@ -45,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     private void playSound(int sound){
         if (mp != null){
@@ -57,6 +72,30 @@ public class MainActivity extends AppCompatActivity {
         mp = MediaPlayer.create(this,sound);
         mp.start();
     }
+
+    public void sampleDialog(){
+        sample = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.black_jack,null);
+        sample.setView(dialogLayout);
+        playSound(R.raw.dealing_card); // sounds as well
+
+        final AlertDialog alert = sample.create();
+        alert.show();
+        new CountDownTimer(3000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // TODO Auto-generated method stub
+            }
+            @Override
+            public void onFinish() {
+                // TODO Auto-generated method stub
+                alert.dismiss();
+            }
+        }.start();
+    }
+
+
 
     public void clickMethodHit(View view){ // Hit button
         if(GetterSetter.isStanding == false){

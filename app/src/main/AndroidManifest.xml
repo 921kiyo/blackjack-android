@@ -30,9 +30,8 @@
         <activity android:name=".MainActivity"
             android:label="Kiyo"
             android:theme="@style/AppTheme.NoActionBar">
-
-
         </activity>
+
     </application>
 
 </manifest>

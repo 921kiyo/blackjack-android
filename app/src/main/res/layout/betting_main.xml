@@ -4,20 +4,20 @@
     android:layout_height="match_parent"
     android:background="@drawable/casino_table">
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"/>
-    <TextView
         android:id="@+id/betTotal"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
         android:text="Cash Total:£0"/>
     <TextView
         android:id="@+id/cashTotal"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
         android:text="Bet Total:£3000"
         android:layout_below="@+id/fifty"
         android:layout_alignLeft="@+id/betTotal"
@@ -43,7 +43,6 @@
         android:id="@+id/twenty_five"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/five"
         android:layout_alignParentRight="true"
         android:background="@null"
         android:src="@drawable/chip_twenty_five"

@@ -4,4 +4,31 @@
     <string name="play">Play Game</string>
     <string name="score">See Score</string>
     <string name="setting">Setting</string>
+    <string name="cancel">Cancel</string>
+    <string name="rule">
+        The Pack
+The standard 52-card pack is used, but in most casinos several decks of cards are shuffled together. The six-deck game (312 cards) is the most popular. In addition, the dealer uses a blank plastic card, which is never dealt, but is placed toward the bottom of the pack to indicate when it will be time for the cards to be reshuffled. When four or more decks are used, they are dealt from a shoe (a box that allows the dealer to remove cards one at a time, face down, without actually holding one or more packs).
+
+Object of the Game
+Each participant attempts to beat the dealer by getting a count as close to 21 as possible, without going over 21.
+
+Card Values/Scoring
+It is up to each individual player if an ace is worth 1 or 11. Face cards are 10 and any other card is its pip value.
+
+Betting
+Before the deal begins, each player places a bet, in chips, in front of him in the designated area. Minimum and maximum limits are established on the betting, and the general limits are from $2 to $500.
+
+The Shuffle and Cut
+The dealer thoroughly shuffles portions of the pack until all the cards have been mixed and combined. He designates one of the players to cut, and the plastic insert card is placed so that the last 60 to 75 cards or so will not be used. (Not dealing to the bottom of all the cards makes it more difficult for professional card counters to operate effectively.)
+
+The Deal
+When all the players have placed their bets, the dealer gives one card face up to each player in rotation clockwise, and then one card face up to himself. Another round of cards is then dealt face up to each player, but the dealer takes his second card face down. Thus, each player except the dealer receives two cards face up, and the dealer receives one card face up and one card face down. (In some games, played with only one deck, the players' cards are dealt face down and they get to hold them. Today, however, virtually all Blackjack games feature the players' cards dealt face up on the condition that no player may touch any cards.)
+
+Naturals
+If a player's first two cards are an ace and a "ten-card" (a picture card or 10), giving him a count of 21 in two cards, this is a natural or "blackjack." If any player has a natural and the dealer does not, the dealer immediately pays that player one and a half times the amount of his bet. If the dealer has a natural, he immediately collects the bets of all players who do not have naturals, (but no additional amount). If the dealer and another player both have naturals, the bet of that player is a stand-off (a tie), and the player takes back his chips.
+
+If the dealer's face-up card is a ten-card or an ace, he looks at his face-down card to see if the two cards make a natural. If the face-up card is not a ten-card or an ace, he does not look at the face-down card until it is the dealer's turn to play.
+
+- See more at: http://www.bicyclecards.com/how-to-play/blackjack/#sthash.C6ExGuSv.dpuf
+    </string>
 </resources>

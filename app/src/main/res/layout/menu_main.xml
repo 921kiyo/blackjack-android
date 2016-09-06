@@ -3,25 +3,23 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/casino_table">
-    <EditText
-        android:id="@+id/input_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""/>
     <Button
         android:id="@+id/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/play"/>
     <Button
+        android:id="@+id/stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="stats"/>
     <Button
+        android:id="@+id/rules"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rules"/>
     <Button
+        android:id="@+id/buy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buy chips"/>

@@ -30,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer mp;
     AlertDialog.Builder sample;
     ImageView image;
-    MediaPlayer backgroundMusic;
-
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,16 +38,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager(); //get fragment manager to create transactions for adding, removing and replacing fragments
         fragment = (MainActivityFragment)fragmentManager.findFragmentById(R.id.fragment);
         textView = fragment.textviewPlayer;
-        backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
-        backgroundMusic.setLooping(true);
-        backgroundMusic.start();
-    }
-
-    @Override
-    protected void onPause(){
-        super.onPause();
-        backgroundMusic.release();
-        finish();
 
     }
 

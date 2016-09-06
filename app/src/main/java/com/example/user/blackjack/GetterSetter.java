@@ -1,5 +1,6 @@
 package com.example.user.blackjack;
 
+
 /**
  * Created by user on 03/09/2016.
  */
@@ -17,6 +18,6 @@ public class GetterSetter {
     static int verticalMove = 400;
     static int isDouble = 0;
     static int doubleAmount = 0;
-
+    static int playerBust = 0;
 
 }

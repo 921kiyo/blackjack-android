@@ -1,6 +1,7 @@
 package com.example.user.blackjack;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,11 +14,12 @@ import android.widget.Toast;
  */
 public class MenuActivity extends AppCompatActivity{
     Button mEnterButton;
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.menu_main);
+        setContentView(R.layout.betting_main);
 
         mEnterButton = (Button)findViewById(R.id.deal);
         mEnterButton.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +35,18 @@ public class MenuActivity extends AppCompatActivity{
 
             }
         });
+    }
+
+    private void playSound(int sound){
+        if (mp != null){
+            if (mp.isPlaying()||mp.isLooping()) {
+                mp.stop();
+            }
+            mp.release();
+            mp = null;
+        }
+        mp = MediaPlayer.create(this,sound);
+        mp.start();
     }
 
     private void displayCashTotal(int cashTotal){
@@ -60,6 +74,7 @@ public class MenuActivity extends AppCompatActivity{
         GetterSetter.bet = GetterSetter.bet + 1;
         displayCashTotal(GetterSetter.cash);
         displayBet(GetterSetter.bet);
+        playSound(R.raw.chips_short);
     }
 
     public void plusFive(View view){
@@ -70,6 +85,7 @@ public class MenuActivity extends AppCompatActivity{
         GetterSetter.bet = GetterSetter.bet + 5;
         displayCashTotal(GetterSetter.cash);
         displayBet(GetterSetter.bet);
+        playSound(R.raw.chips_short);
     }
 
     public void plusFifty(View view){
@@ -80,6 +96,7 @@ public class MenuActivity extends AppCompatActivity{
         GetterSetter.bet = GetterSetter.bet + 50;
         displayCashTotal(GetterSetter.cash);
         displayBet(GetterSetter.bet);
+        playSound(R.raw.chips_short);
     }
 
     public void plusHundred(View view){
@@ -90,6 +107,7 @@ public class MenuActivity extends AppCompatActivity{
         GetterSetter.bet = GetterSetter.bet + 100;
         displayCashTotal(GetterSetter.cash);
         displayBet(GetterSetter.bet);
+        playSound(R.raw.chips_short);
     }
 
     public void plusFiveHundred(View view){
@@ -100,6 +118,7 @@ public class MenuActivity extends AppCompatActivity{
         GetterSetter.bet = GetterSetter.bet + 500;
         displayCashTotal(GetterSetter.cash);
         displayBet(GetterSetter.bet);
+        playSound(R.raw.chips_short);
     }
 
 }

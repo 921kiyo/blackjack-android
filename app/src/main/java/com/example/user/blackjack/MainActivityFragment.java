@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.os.Handler;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.Random;
@@ -23,7 +24,7 @@ public class MainActivityFragment extends Fragment {
     int n = 0;
     View rootView;
     TextView textviewPlayer;
-    TextView textviewDealer;
+    static TextView textviewDealer;
     TextView textviewCash;
     TextView textviewBet;
     Handler mHandler;
@@ -68,8 +69,16 @@ public class MainActivityFragment extends Fragment {
     private Runnable mUpdate = new Runnable() {
         @Override
         public void run() {
+            if (GetterSetter.playerScore == 21){
+                /// Black Jack
+                textviewPlayer.setText("Player: " + GetterSetter.playerScore + " ");
+                textviewDealer.setText("Dealer: " + GetterSetter.dealerScore + " ");
+                textviewCash.setText("Cash: " + (GetterSetter.cash) + " ");
+                textviewBet.setText("Bet: " + GetterSetter.bet +  " ");
+                GetterSetter.isStanding = true;
+            }
 
-            if(GetterSetter.playerScore <= 21){
+            else if(GetterSetter.playerScore < 21){
                 textviewPlayer.setText("Player: " + GetterSetter.playerScore + " ");
                 textviewDealer.setText("Dealer: " + GetterSetter.dealerScore + " ");
                 textviewCash.setText("Cash: " + (GetterSetter.cash) + " ");
@@ -77,11 +86,10 @@ public class MainActivityFragment extends Fragment {
             }
             else{
                 textviewPlayer.setText("Bust!");
-                GetterSetter.bet = 0; // reset bet amount
-                GetterSetter.isStanding = true;
+                if(GetterSetter.playerBust ==0){
+                    GetterSetter.playerBust = 1;
+                }
             }
-
-
             if(GetterSetter.bottunPressed == 0){
                 if(GetterSetter.dealerHit > 1){
                     if(GetterSetter.dealerScore < 17 && GetterSetter.dealerScore != 0){ // if the dealer's hands is less than 17, take another hit
@@ -96,16 +104,34 @@ public class MainActivityFragment extends Fragment {
                     }
                 }
             }
-
+            if(GetterSetter.playerBust == 1){
+                // when player bust, reveal dealer's card and score
+                judgeWin();
+                GetterSetter.playerBust = 2;
+            }
+            if(GetterSetter.playerBust > 1){
+                textviewDealer.setText("Dealer: " + GetterSetter.dealerScore + " ");
+            }
 
             mHandler.postDelayed(this,1); //???
         }
     };
+
+
     public void judgeWin(){
-        if(GetterSetter.playerScore > GetterSetter.dealerScore || GetterSetter.dealerScore > 21){
+        if (GetterSetter.dealerScore > 21){
+            textviewDealer.setText("Bust!");
+            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
+            GetterSetter.bet = 0;
+        }
+        else if(GetterSetter.playerScore > GetterSetter.dealerScore){
             // Player win!!
             GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
             GetterSetter.bet = 0;
+        }
+        else if (GetterSetter.playerScore == GetterSetter.dealerScore){
+            textviewPlayer.setText("Push!");
+            textviewDealer.setText("Push!");
         }
         else{
             // Dealer win! take betting amount

@@ -86,6 +86,13 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
                 }
             }
 
+            if (GetterSetter.playerBust == 1) {
+                for (int x = 0; x <= 1; x++) {
+                    cardDraw.deal(canvas, x, (80 * x), -200);
+                        addScore(x, false, true);
+                }
+
+            }
             GetterSetter.bottunPressed = 0;
     }
 
@@ -93,7 +100,6 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
         if(n == 0 && GetterSetter.dealerHit < 3) { // when player has not clicked stand
             localScore = 0;
         }else{
-            // need to deal with ace case here
             if(GetterSetter.card[n].rank >= 8 && GetterSetter.card[n].rank < 12){ /// if rank is 10, jack, queen and king, then give 10 as score
                 localScore = 10;
             }

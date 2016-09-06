@@ -17,7 +17,7 @@ public class StartActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.start_main);
+        setContentView(R.layout.menu_main);
         // Getting name from login page
         mEditText = (TextView)findViewById(R.id.input_name);
 

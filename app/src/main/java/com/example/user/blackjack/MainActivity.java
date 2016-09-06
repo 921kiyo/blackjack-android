@@ -1,8 +1,11 @@
 package com.example.user.blackjack;
 
+import android.media.AudioTrack;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 //import android.support.design.widget.FloatingActionButton;
 //import android.support.design.widget.Snackbar;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     int n = 0;
     TextView textView = null;
     int cardn  = 0;
+    MediaPlayer mp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +46,25 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    private void playSound(int sound){
+        if (mp != null){
+            if (mp.isPlaying()||mp.isLooping()) {
+                mp.stop();
+            }
+            mp.release();
+            mp = null;
+        }
+        mp = MediaPlayer.create(this,sound);
+        mp.start();
+    }
+
     public void clickMethodHit(View view){ // Hit button
         if(GetterSetter.isStanding == false){
             GetterSetter.playerScore  = 0;
             GetterSetter.dealerScore = 0;
             GetterSetter.hit++;
             GetterSetter.bottunPressed = 1;
+            playSound(R.raw.dealing_card);
         }
 
     }
@@ -56,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         GetterSetter.dealerHit = GetterSetter.hit; // when stand pressed, assign dealerHit to be equal to hit
         GetterSetter.bottunPressed = 1;
         GetterSetter.isStanding = true;
+        playSound(R.raw.dealing_card);
     }
 
     public void clickMethodRedeal(View view){ // redeal button
@@ -66,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
         GetterSetter.bottunPressed = 1;
         GetterSetter.isStanding = false;
         GetterSetter.isDouble = 0;
+        GetterSetter.playerBust = 0;
         fragment.shuffleDeck(GetterSetter.card);
+        playSound(R.raw.dealing_card);
     }
 
     public void clickMethodDouble(View view){

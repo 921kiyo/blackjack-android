@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.user.blackjack.MainActivity">
 
+
     <!--<android.support.widget.AppBarLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->

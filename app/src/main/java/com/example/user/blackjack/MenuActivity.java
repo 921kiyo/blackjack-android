@@ -18,14 +18,6 @@ public class MenuActivity extends AppCompatActivity{
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.menu_main);
-        // Getting name from login page
-        mEditText = (TextView)findViewById(R.id.input_name);
-
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-
-        String name = extras.getString("name");
-        mEditText.setText(name);
 
         // Callback for play
         mPlayButton = (Button)findViewById(R.id.play);

@@ -12,15 +12,12 @@
         android:label="BlackJack"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name=".LoginActivity"
-            android:label="BlackJack">
+        <activity android:name=".MenuActivity"
+            android:label="Black Jack">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".MenuActivity"
-            android:label="Start Menu">
         </activity>
         <activity android:name=".BettingActivity"
             android:label="Menu">

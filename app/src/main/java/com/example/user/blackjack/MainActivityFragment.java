@@ -58,7 +58,9 @@ public class MainActivityFragment extends Fragment {
         textviewBet = (TextView) rootView.findViewById(R.id.bet);
         textviewBet.setTextColor(Color.RED);
 
-        rootView.setBackgroundColor(Color.GREEN);
+//        rootView.setBackgroundResource(R.drawable.casino_table);
+//
+//        rootView.setBackgroundColor(Color.GREEN);
 
         deck = new Card[52];
         for(int suit = 0; suit < 4; suit++){

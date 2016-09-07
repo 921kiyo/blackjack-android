@@ -22,18 +22,19 @@ public class CanvasThread extends Thread {
     @Override
     public void run(){
         Canvas canvas;
+        _panel.init();
         while(running){
             canvas = null; //??
             try{
-//                sleep(17);
+//                sleep(30);
                 canvas = _surfaceHolder.lockCanvas(null); // lockCanvas creates a surface area until you call unlockCanvasAndPost() no other code can call lockCanvas() and write to the surface until your code is finished.
                 synchronized (_surfaceHolder){ // synchronize means only one thread can execute this code at a time
                     _panel.onDraw(canvas);
                 }
-            }
+//            }
 //            catch(InterruptedException ex){
 //                ex.printStackTrace();
-//            }
+            }
             finally{// finally code will always run
                 if (canvas != null){
                     _surfaceHolder.unlockCanvasAndPost(canvas);

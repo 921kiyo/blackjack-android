@@ -89,16 +89,14 @@ public class MainActivityFragment extends Fragment {
 
     public void bustDialog(){
         bustMessage = new AlertDialog.Builder(getContext());
-        bustMessage.setMessage("Bust");
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.bust_dialog,null);
         bustMessage.setView(dialogLayout);
-
-//        playSound(R.raw.dealing_card); // sounds as well
+        bustMessage.setMessage("Bust");
 
         final AlertDialog alert = bustMessage.create();
         alert.show();
-        new CountDownTimer(3000, 2000) {
+        new CountDownTimer(1000, 3000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // TODO Auto-generated method stub
@@ -113,16 +111,15 @@ public class MainActivityFragment extends Fragment {
 
     public void blackJackDialog(){
         blackJackMessage = new AlertDialog.Builder(getContext());
-        blackJackMessage.setMessage("Black Jack!!");
+
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.black_jack_dialog,null);
         blackJackMessage.setView(dialogLayout);
-
-//        playSound(R.raw.applause); // sounds as well
+        blackJackMessage.setMessage("Black Jack!!");
 
         final AlertDialog alert = blackJackMessage.create();
         alert.show();
-        new CountDownTimer(3000, 1000) {
+        new CountDownTimer(1000, 3000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // TODO Auto-generated method stub
@@ -195,7 +192,7 @@ public class MainActivityFragment extends Fragment {
                 textviewDealer.setText("Dealer: " + GetterSetter.dealerScore + " ");
             }
 
-            mHandler.postDelayed(this,1); //???
+            mHandler.postDelayed(this,1); //Causes the Runnable r to be added to the message queue, to be run after the specified amount of time elapses
         }
     };
 
@@ -205,12 +202,9 @@ public class MainActivityFragment extends Fragment {
         }
         else if(GetterSetter.dealerScore > 21){
             textviewDealer.setText("Bust!");
-//            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
 
         }
         else if(GetterSetter.playerScore > GetterSetter.dealerScore){
-            // Player win!!
-//            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
 
         }
         else if (GetterSetter.playerScore == GetterSetter.dealerScore){
@@ -218,7 +212,6 @@ public class MainActivityFragment extends Fragment {
             textviewDealer.setText("Push!");
         }
         else{
-            // Dealer win! take betting amount
 
         }
     }

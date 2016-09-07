@@ -108,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
         GetterSetter.playerBlackjack = 0;
         fragment.shuffleDeck(GetterSetter.card);
         playSound(R.raw.dealing_card);
+        GetterSetter.horizontalMove = 0;
+        GetterSetter.verticalMove = 400;
     }
 
     public void clickMethodDouble(View view){

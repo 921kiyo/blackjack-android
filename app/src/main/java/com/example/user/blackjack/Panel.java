@@ -22,6 +22,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
     private CanvasThread canvasthread; // this holds bitmap object
     CardDraw cardDraw;
     int localScore;
+    Bitmap mScaledBitmap;
 
 
     public Panel(Context context, AttributeSet attrs){ // initialize a panel(constructor)
@@ -41,36 +42,40 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
         setFocusable(true);
     }
 
-    @Override
-    public void onDraw(Canvas canvas){ // this triggers animation(execute over and over again)!!!
+    protected  void init(){
         Resources res = getResources();
-        Bitmap bitmap = BitmapFactory.decodeResource(res, R.drawable.casino_table);
+        Bitmap bitmap = BitmapFactory.decodeResource(res, R.drawable.casino_table_small);
         int h = 1200;
         int w = 1000;
         Bitmap scaled = Bitmap.createScaledBitmap(bitmap, w, h, true);
-        Bitmap mScaledBitmap = scaled;
-        canvas.drawBitmap(mScaledBitmap, 0,0 ,paint);
+        mScaledBitmap = scaled;
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas){ // this triggers animation(execute over and over again)!!!
+        canvas.drawBitmap(mScaledBitmap, 0, 0, paint);
+//        canvas.drawColor(Color.GREEN);
             for (int x = 0; x <= 1; x++){ // draw first 2 cards for dealer
                if (x == 0 && GetterSetter.dealerHit < 3){
                    cardDraw.deal(canvas,501, (80 * x), -200);// draw back card on screen. -200 is xdistance
                }
                 else{
-                   cardDraw.deal(canvas,x, (80 * x), -200);
+//                   cardDraw.deal(canvas,x, (80 * x), -200);
+                   if(GetterSetter.horizontalMove < 81){ // keep looping this statement untile horizantalMove hits 80
+                       GetterSetter.horizontalMove = GetterSetter.horizontalMove + 4;
+                       GetterSetter.verticalMove = GetterSetter.verticalMove - 20;
+                   }
+                   if(GetterSetter.verticalMove >= -200){
+                       GetterSetter.verticalMove = -200;
+                   }
+                   cardDraw.deal(canvas,x, (GetterSetter.horizontalMove * x), GetterSetter.verticalMove);
                }
                 if (GetterSetter.bottunPressed == 1){ // only after hit button, execute addScore
                     addScore(x,false,true); // when hit stand, calculate score
                 }
             }
             for (int n = 2; n <= 3; n++){ // draw first 2 cards for player
-                cardDraw.deal(canvas,n, (80 * n), 250);// draw multiple cards on screen. 700 is xdistance
-
-                if (GetterSetter.bottunPressed == 1){ // only after hit button, execute addScore
-                    addScore(n,true,false); // when hit stand, calculate score
-                }
-            }
-
-            for (int n = 4; n <=GetterSetter.hit; n++ ){ // after first 2 cards for player, calculate sum of score
-
+//                cardDraw.deal(canvas,n, (80 * n), 250);// draw multiple cards on screen. 700 is xdistance
                 if(GetterSetter.horizontalMove < 81){ // keep looping this statement untile horizantalMove hits 80
                     GetterSetter.horizontalMove = GetterSetter.horizontalMove + 4;
                     GetterSetter.verticalMove = GetterSetter.verticalMove - 20;
@@ -80,6 +85,14 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
                 }
                 cardDraw.deal(canvas,n, (GetterSetter.horizontalMove * n), GetterSetter.verticalMove);
 
+                if (GetterSetter.bottunPressed == 1){ // only after hit button, execute addScore
+                    addScore(n,true,false); // when hit stand, calculate score
+                }
+            }
+
+            for (int n = 4; n <=GetterSetter.hit; n++ ){ // after first 2 cards for player, calculate sum of score
+                cardDraw.deal(canvas,n, (80 * n), 250);
+
                 if (GetterSetter.bottunPressed == 1){
                     addScore(n, true, false);
                 }
@@ -88,6 +101,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 
             for (int x = (GetterSetter.hit + 1); x <= GetterSetter.dealerHit; x++){ /// when hit stand button,
                 cardDraw.deal(canvas,x, (80 * x), -200);
+
                 if (GetterSetter.bottunPressed == 1){
                     addScore(x,false,true);
                 }
@@ -96,9 +110,8 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
             if (GetterSetter.playerBust == 1) {
                 for (int x = 0; x <= 1; x++) {
                     cardDraw.deal(canvas, x, (80 * x), -200);
-                        addScore(x, false, true);
+                    addScore(x, false, true);
                 }
-
             }
             GetterSetter.bottunPressed = 0;
     }

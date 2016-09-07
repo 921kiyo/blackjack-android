@@ -13,9 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.Handler;
-import android.widget.Toast;
 
-import java.util.Collections;
 import java.util.Random;
 
 
@@ -33,7 +31,8 @@ public class MainActivityFragment extends Fragment {
     TextView textviewBet;
     Handler mHandler;
     MediaPlayer mp;
-    AlertDialog.Builder sample;
+    AlertDialog.Builder bustMessage;
+    AlertDialog.Builder blackJackMessage;
     ImageView image;
 
     public MainActivityFragment(){
@@ -88,6 +87,54 @@ public class MainActivityFragment extends Fragment {
         mp.start();
     }
 
+    public void bustDialog(){
+        bustMessage = new AlertDialog.Builder(getContext());
+        bustMessage.setMessage("Bust");
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.bust_dialog,null);
+        bustMessage.setView(dialogLayout);
+
+//        playSound(R.raw.dealing_card); // sounds as well
+
+        final AlertDialog alert = bustMessage.create();
+        alert.show();
+        new CountDownTimer(3000, 2000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // TODO Auto-generated method stub
+            }
+            @Override
+            public void onFinish() {
+                // TODO Auto-generated method stub
+                alert.dismiss();
+            }
+        }.start();
+    }
+
+    public void blackJackDialog(){
+        blackJackMessage = new AlertDialog.Builder(getContext());
+        blackJackMessage.setMessage("Black Jack!!");
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.black_jack_dialog,null);
+        blackJackMessage.setView(dialogLayout);
+
+//        playSound(R.raw.applause); // sounds as well
+
+        final AlertDialog alert = blackJackMessage.create();
+        alert.show();
+        new CountDownTimer(3000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // TODO Auto-generated method stub
+            }
+            @Override
+            public void onFinish() {
+                // TODO Auto-generated method stub
+                alert.dismiss();
+            }
+        }.start();
+    }
+
     private Runnable mUpdate = new Runnable() {
         @Override
         public void run() {
@@ -99,6 +146,9 @@ public class MainActivityFragment extends Fragment {
                 textviewBet.setText("Bet: " + GetterSetter.bet +  " ");
                 GetterSetter.isBlackJack = true;
                 GetterSetter.isStanding = true;
+                if(GetterSetter.playerBlackjack == 0){
+                    GetterSetter.playerBlackjack = 1;
+                }
                 judgeWin();
             }
 
@@ -110,8 +160,6 @@ public class MainActivityFragment extends Fragment {
             }
             else{
                 textviewPlayer.setText("Bust!");
-                //playSound(R.raw.oh);
-
                 if(GetterSetter.playerBust ==0){
                     GetterSetter.playerBust = 1;
                 }
@@ -130,9 +178,16 @@ public class MainActivityFragment extends Fragment {
                     }
                 }
             }
+
+            if(GetterSetter.playerBlackjack == 1){
+                playSound(R.raw.congratulations);
+                blackJackDialog();
+                GetterSetter.playerBlackjack = 2;
+            }
             if(GetterSetter.playerBust == 1){
-                // when player bust, reveal dealer's card and score
+                // when player bust_dialog, reveal dealer's card and score
                 playSound(R.raw.oh);
+                bustDialog();
                 judgeWin();
                 GetterSetter.playerBust = 2;
             }
@@ -155,7 +210,6 @@ public class MainActivityFragment extends Fragment {
         }
         else if(GetterSetter.playerScore > GetterSetter.dealerScore){
             // Player win!!
-            playSound(R.raw.applause);
 //            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
 
         }

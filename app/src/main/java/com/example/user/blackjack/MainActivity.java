@@ -60,29 +60,6 @@ public class MainActivity extends AppCompatActivity {
         mp.start();
     }
 
-    public void sampleDialog(){
-        sample = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogLayout = inflater.inflate(R.layout.black_jack,null);
-        sample.setView(dialogLayout);
-        playSound(R.raw.dealing_card); // sounds as well
-
-        final AlertDialog alert = sample.create();
-        alert.show();
-        new CountDownTimer(3000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                // TODO Auto-generated method stub
-            }
-            @Override
-            public void onFinish() {
-                // TODO Auto-generated method stub
-                alert.dismiss();
-            }
-        }.start();
-    }
-
-
 
     public void clickMethodHit(View view){ // Hit button
         if(GetterSetter.isStanding == false){
@@ -90,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             GetterSetter.dealerScore = 0;
             GetterSetter.hit++;
             GetterSetter.bottunPressed = 1;
-            playSound(R.raw.dealing_card);
+//            playSound(R.raw.dealing_card);
         }
 
     }
@@ -100,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         GetterSetter.dealerHit = GetterSetter.hit; // when stand pressed, assign dealerHit to be equal to hit
         GetterSetter.bottunPressed = 1;
         GetterSetter.isStanding = true;
-        playSound(R.raw.dealing_card);
+//        playSound(R.raw.dealing_card);
     }
 
     public void clickMethodRedeal(View view){ // redeal button
@@ -128,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         GetterSetter.isStanding = false;
         GetterSetter.isDouble = 0;
         GetterSetter.playerBust = 0;
+        GetterSetter.playerBlackjack = 0;
         fragment.shuffleDeck(GetterSetter.card);
         playSound(R.raw.dealing_card);
     }

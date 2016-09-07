@@ -19,6 +19,7 @@ public class GetterSetter {
     static int isDouble = 0; // should be boolean
     static int doubleAmount = 0;
     static int playerBust = 0; // should be boolean
+    static int playerBlackjack = 0;
     static boolean isBlackJack = false;
     static boolean isBust = false;
 

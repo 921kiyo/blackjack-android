@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.user.blackjack.MainActivityFragment"
     tools:showIn="@layout/activity_main"
-    >
+    android:background="@drawable/casino_table">
     <!-- tools:showIn allows you to render layout_A in layout_B-->
     <com.example.user.blackjack.Panel
         android:id="@+id/surfaceView01"

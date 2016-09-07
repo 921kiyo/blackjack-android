@@ -31,6 +31,7 @@ public class BettingActivity extends AppCompatActivity{
                 }
                 else{
                     startActivity(intent);
+                    playSound(R.raw.shuffle);
                 }
 
             }

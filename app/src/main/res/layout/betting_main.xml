@@ -43,7 +43,8 @@
         android:id="@+id/twenty_five"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_below="@id/five"
+        android:layout_alignParentLeft="true"
         android:background="@null"
         android:src="@drawable/chip_twenty_five"
         android:onClick="plusTwentyFive" />

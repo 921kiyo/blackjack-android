@@ -38,7 +38,6 @@ public class MainActivityFragment extends Fragment {
 
     public MainActivityFragment(){
 
-
     }
 
     @Override
@@ -73,22 +72,21 @@ public class MainActivityFragment extends Fragment {
         deck = shuffleDeck(deck);
 
         mHandler = new Handler();
-        mHandler.post(mUpdate);
+        mHandler.post(mUpdate); //??
         return rootView;
     }
 
-//    private void playSound(int sound){
-//        if (mp != null){
-//            if (mp.isPlaying()||mp.isLooping()) {
-//                mp.stop();
-//            }
-//            mp.release();
-//            mp = null;
-//        }
-//        mp = MediaPlayer.create(this,sound);
-//        mp.start();
-//    }
-
+    private void playSound(int sound){
+        if (mp != null){
+            if (mp.isPlaying()||mp.isLooping()) {
+                mp.stop();
+            }
+            mp.release();
+            mp = null;
+        }
+        mp = MediaPlayer.create(getContext(),sound);
+        mp.start();
+    }
 
     private Runnable mUpdate = new Runnable() {
         @Override
@@ -101,6 +99,7 @@ public class MainActivityFragment extends Fragment {
                 textviewBet.setText("Bet: " + GetterSetter.bet +  " ");
                 GetterSetter.isBlackJack = true;
                 GetterSetter.isStanding = true;
+                judgeWin();
             }
 
             else if(GetterSetter.playerScore < 21){
@@ -111,9 +110,12 @@ public class MainActivityFragment extends Fragment {
             }
             else{
                 textviewPlayer.setText("Bust!");
+                //playSound(R.raw.oh);
+
                 if(GetterSetter.playerBust ==0){
                     GetterSetter.playerBust = 1;
                 }
+                judgeWin();
             }
             if(GetterSetter.bottunPressed == 0){
                 if(GetterSetter.dealerHit > 1){
@@ -122,7 +124,6 @@ public class MainActivityFragment extends Fragment {
                         GetterSetter.dealerScore = 0;
                         GetterSetter.dealerHit++;
                         GetterSetter.bottunPressed = 1;
-
                     }
                     else{
                         judgeWin();
@@ -131,6 +132,7 @@ public class MainActivityFragment extends Fragment {
             }
             if(GetterSetter.playerBust == 1){
                 // when player bust, reveal dealer's card and score
+                playSound(R.raw.oh);
                 judgeWin();
                 GetterSetter.playerBust = 2;
             }
@@ -142,19 +144,20 @@ public class MainActivityFragment extends Fragment {
         }
     };
 
-
-
-
     public void judgeWin(){
-        if (GetterSetter.dealerScore > 21){
+        if (GetterSetter.playerScore > 21){
+
+        }
+        else if(GetterSetter.dealerScore > 21){
             textviewDealer.setText("Bust!");
-            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
-            GetterSetter.bet = 0;
+//            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
+
         }
         else if(GetterSetter.playerScore > GetterSetter.dealerScore){
             // Player win!!
-            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
-            GetterSetter.bet = 0;
+            playSound(R.raw.applause);
+//            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
+
         }
         else if (GetterSetter.playerScore == GetterSetter.dealerScore){
             textviewPlayer.setText("Push!");
@@ -162,7 +165,7 @@ public class MainActivityFragment extends Fragment {
         }
         else{
             // Dealer win! take betting amount
-            GetterSetter.bet = 0;
+
         }
     }
 

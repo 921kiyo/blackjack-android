@@ -1,6 +1,7 @@
 package com.example.user.blackjack;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -42,7 +43,13 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void onDraw(Canvas canvas){ // this triggers animation(execute over and over again)!!!
-        canvas.drawColor(Color.BLACK);
+        Resources res = getResources();
+        Bitmap bitmap = BitmapFactory.decodeResource(res, R.drawable.casino_table);
+        int h = 1200;
+        int w = 1000;
+        Bitmap scaled = Bitmap.createScaledBitmap(bitmap, w, h, true);
+        Bitmap mScaledBitmap = scaled;
+        canvas.drawBitmap(mScaledBitmap, 0,0 ,paint);
             for (int x = 0; x <= 1; x++){ // draw first 2 cards for dealer
                if (x == 0 && GetterSetter.dealerHit < 3){
                    cardDraw.deal(canvas,501, (80 * x), -200);// draw back card on screen. -200 is xdistance

@@ -104,6 +104,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickMethodRedeal(View view){ // redeal button
+        if (GetterSetter.playerScore > 21){
+            GetterSetter.cash = GetterSetter.cash - GetterSetter.bet;
+        }
+        else if(GetterSetter.dealerScore > 21){
+            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
+        }
+        else if(GetterSetter.playerScore > GetterSetter.dealerScore && GetterSetter.playerScore< 21){
+            // Player win!!
+            GetterSetter.cash = GetterSetter.cash + (GetterSetter.bet * 2);
+
+        }
+        else{
+            // Dealer win! take betting amount
+            GetterSetter.cash = GetterSetter.cash - GetterSetter.bet;
+
+        }
         GetterSetter.playerScore = 0;
         GetterSetter.dealerScore = 0;
         GetterSetter.hit = 3;

@@ -16,6 +16,9 @@ import android.os.Handler;
 
 import java.util.Random;
 
+import static com.example.user.blackjack.R.layout.black_jack_dialog;
+import static com.example.user.blackjack.R.layout.bust_dialog;
+
 
 /**
  * Created by user on 02/09/2016.
@@ -94,13 +97,15 @@ public class MainActivityFragment extends Fragment {
     public void bustDialog(){
         bustMessage = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View dialogLayout = inflater.inflate(R.layout.bust_dialog,null);
+        View dialogLayout;
+        dialogLayout = inflater.inflate(bust_dialog,null);
         bustMessage.setView(dialogLayout);
         bustMessage.setMessage("Bust");
+        playSound(R.raw.oh_loud);
 
         final AlertDialog alert = bustMessage.create();
         alert.show();
-        new CountDownTimer(1000, 3000) {
+        new CountDownTimer(2000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // TODO Auto-generated method stub
@@ -117,9 +122,10 @@ public class MainActivityFragment extends Fragment {
         blackJackMessage = new AlertDialog.Builder(getContext());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View dialogLayout = inflater.inflate(R.layout.black_jack_dialog,null);
+        View dialogLayout = inflater.inflate(black_jack_dialog,null);
         blackJackMessage.setView(dialogLayout);
         blackJackMessage.setMessage("Black Jack!!");
+        playSound(R.raw.congratulations);
 
         final AlertDialog alert = blackJackMessage.create();
         alert.show();
@@ -181,13 +187,10 @@ public class MainActivityFragment extends Fragment {
             }
 
             if(GetterSetter.playerBlackjack == 1){
-                playSound(R.raw.congratulations);
                 blackJackDialog();
                 GetterSetter.playerBlackjack = 2;
             }
             if(GetterSetter.playerBust == 1){
-                // when player bust_dialog, reveal dealer's card and score
-                playSound(R.raw.oh_loud);
                 bustDialog();
                 judgeWin();
                 GetterSetter.playerBust = 2;

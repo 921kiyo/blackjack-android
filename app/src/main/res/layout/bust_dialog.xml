@@ -5,10 +5,10 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/bust_dialog"
+        android:id="@+id/black_jack_dialog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bust_robbie2"
+        android:src="@drawable/bust_robbie3"
         android:layout_gravity="center" />
 
 </LinearLayout>

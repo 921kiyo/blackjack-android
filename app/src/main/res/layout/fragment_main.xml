@@ -58,49 +58,68 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:text="Hit"
             android:layout_gravity="center"
             android:onClick="clickMethodHit"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/button2"
-            android:layout_toEndOf="@+id/button2">
+            android:layout_toEndOf="@+id/button2"
+            android:layout_margin="10dp"
+            android:background="#000033"
+            android:alpha="0.6"
+            android:textColor="@android:color/white"
+            android:textSize="20dp">
         </Button>
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:text="Stand"
             android:layout_gravity="center"
             android:onClick="clickMethodStand"
+            android:background="#000033"
+            android:alpha="0.6"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/button"
-            android:layout_toEndOf="@+id/button">
+            android:layout_toLeftOf="@+id/button3"
+            android:layout_toStartOf="@+id/button3">
         </Button>
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:text="Redeal"
             android:layout_gravity="center"
             android:onClick="clickMethodRedeal"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:background="#000033"
+            android:alpha="0.6"
+            android:textColor="@android:color/white"
+            android:textSize="20dp">
         </Button>
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:text="Double"
             android:layout_gravity="center"
             android:onClick="clickMethodDouble"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="#000033"
+            android:alpha="0.6"
+            android:textColor="@android:color/white"
+            android:textSize="20dp">
         </Button>
 
 

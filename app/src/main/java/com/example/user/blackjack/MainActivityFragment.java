@@ -46,15 +46,19 @@ public class MainActivityFragment extends Fragment {
 
         textviewPlayer = (TextView) rootView.findViewById(R.id.playerScore);
         textviewPlayer.setTextColor(Color.WHITE);
+        textviewPlayer.setTextSize(20);
 
         textviewDealer = (TextView) rootView.findViewById(R.id.dealerScore);
         textviewDealer.setTextColor(Color.WHITE);
+        textviewDealer.setTextSize(20);
 
         textviewCash = (TextView) rootView.findViewById(R.id.cash);
         textviewCash.setTextColor(Color.WHITE);
+        textviewCash.setTextSize(20);
 
         textviewBet = (TextView) rootView.findViewById(R.id.bet);
-        textviewBet.setTextColor(Color.RED);
+        textviewBet.setTextColor(Color.WHITE);
+        textviewBet.setTextSize(20);
 
 //        rootView.setBackgroundResource(R.drawable.casino_table);
 //
@@ -183,7 +187,7 @@ public class MainActivityFragment extends Fragment {
             }
             if(GetterSetter.playerBust == 1){
                 // when player bust_dialog, reveal dealer's card and score
-                playSound(R.raw.oh);
+                playSound(R.raw.oh_loud);
                 bustDialog();
                 judgeWin();
                 GetterSetter.playerBust = 2;

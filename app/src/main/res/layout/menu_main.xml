@@ -3,26 +3,56 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/casino_table">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/black_jack"
+        android:layout_marginBottom="20dp"
+        android:background="@null"/>
     <Button
         android:id="@+id/play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/play"/>
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:text="@string/play"
+        android:layout_marginBottom="20dp"
+        android:background="#000033"
+        android:alpha="0.6"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:layout_gravity="center_horizontal" />
     <Button
         android:id="@+id/stats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="stats"/>
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:background="#000033"
+        android:alpha="0.6"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:text="stats"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal" />
     <Button
         android:id="@+id/rules"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
         android:onClick="showRuleDialog"
-        android:text="Rules"/>
+        android:layout_marginBottom="20dp"
+        android:background="#000033"
+        android:alpha="0.6"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:text="Rules"
+        android:layout_gravity="center_horizontal" />
     <Button
         android:id="@+id/buy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buy chips"/>
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:text="Buy chips"
+        android:background="#000033"
+        android:alpha="0.6"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

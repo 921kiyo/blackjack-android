@@ -13,14 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity android:name=".MenuActivity"
-            android:label="Black Jack">
+            android:label="Black Jack"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".BettingActivity"
-            android:label="Menu">
+            android:label="Betting"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
 

@@ -3,7 +3,7 @@ Android mobile game App using canvas with Java where user can play black jack wi
 
 This project is the second solo project, a 7-day hackathon at [CodeClan](https://codeclan.com/) in Edinburgh. 
 
-## Main Functinalities
+## Main Functions
 - User gets initial betting amount and bet their money before play.
 - User gets 2 hands and decide whether to hit/stand/double. 
 - When user wins, he/she gets doubled amount back. User lose the bet when lose. 

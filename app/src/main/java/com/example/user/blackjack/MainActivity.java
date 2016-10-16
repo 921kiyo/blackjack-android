@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
         playSound(R.raw.dealing_card);
         GetterSetter.horizontalMove = 0;
         GetterSetter.verticalMove = 400;
+        GetterSetter.iswin = 0;
+        GetterSetter.islose = 0;
     }
 
     public void clickMethodDouble(View view){

@@ -22,13 +22,15 @@
         </activity>
         <activity android:name=".BettingActivity"
             android:label="Betting"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MenuActivity">
         </activity>
 
 
         <activity android:name=".MainActivity"
             android:label="Kiyo"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".BettingActivity">
         </activity>
 
     </application>

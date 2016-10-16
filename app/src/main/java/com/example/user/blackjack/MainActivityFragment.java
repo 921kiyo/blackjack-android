@@ -1,6 +1,7 @@
 package com.example.user.blackjack;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment; // part of activity you can use over and over again (reusable)
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.Handler;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -105,7 +107,7 @@ public class MainActivityFragment extends Fragment {
 
         final AlertDialog alert = bustMessage.create();
         alert.show();
-        new CountDownTimer(2000, 1000) {
+        new CountDownTimer(3000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // TODO Auto-generated method stub
@@ -129,7 +131,7 @@ public class MainActivityFragment extends Fragment {
 
         final AlertDialog alert = blackJackMessage.create();
         alert.show();
-        new CountDownTimer(1000, 3000) {
+        new CountDownTimer(3000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // TODO Auto-generated method stub
@@ -209,9 +211,20 @@ public class MainActivityFragment extends Fragment {
         }
         else if(GetterSetter.dealerScore > 21){
             textviewDealer.setText("Bust!");
-
+            if (GetterSetter.iswin == 0){
+                GetterSetter.iswin = 1;
+            }
         }
         else if(GetterSetter.playerScore > GetterSetter.dealerScore){
+            if (GetterSetter.iswin == 0){
+                GetterSetter.iswin = 1;
+            }
+
+        }
+        else if(GetterSetter.playerScore < GetterSetter.dealerScore){
+            if (GetterSetter.islose == 0){
+                GetterSetter.islose = 1;
+            }
 
         }
         else if (GetterSetter.playerScore == GetterSetter.dealerScore){
@@ -220,6 +233,23 @@ public class MainActivityFragment extends Fragment {
         }
         else{
 
+        }
+
+        if(GetterSetter.iswin == 1){
+            Context context = getContext();
+            CharSequence text = "You Won!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            GetterSetter.iswin = 2;
+        }
+        if(GetterSetter.islose == 1){
+            Context context = getContext();
+            CharSequence text = "You Lost!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            GetterSetter.islose = 2;
         }
     }
 

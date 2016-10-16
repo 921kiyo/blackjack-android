@@ -8,7 +8,7 @@
         android:id="@+id/black_jack_dialog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/black_jack_tony"
+        android:src="@drawable/black_jack"
         android:layout_gravity="center" />
 
 </LinearLayout>

@@ -1,16 +1,20 @@
 # BlackJack
 Android mobile game App using canvas with Java where user can play black jack with an automated dealer in a mobile android phone/tablet.
 
-This project is the second solo project, a 7-day hackathon at [CodeClan](https://codeclan.com/) in Edinburgh. 
+![Alt text](images/image1.PNG?raw=true "Optional Title")
+![Alt text](images/image2.PNG?raw=true "Optional Title")
+![Alt text](images/image3.PNG?raw=true "Optional Title")
+
+This project is the second solo project, a 7-day hackathon at [CodeClan](https://codeclan.com/) in Edinburgh.
 
 ## Main Functions
 - User gets initial betting amount and bet their money before play.
-- User gets 2 hands and decide whether to hit/stand/double. 
-- When user wins, he/she gets doubled amount back. User lose the bet when lose. 
-- User can play the game as long as he/she has the money left. 
+- User gets 2 hands and decide whether to hit/stand/double.
+- When user wins, he/she gets doubled amount back. User lose the bet when lose.
+- User can play the game as long as he/she has the money left.
 
 ## Installation
-In order to run the app, you need to install Android Studio. 
+In order to run the app, you need to install Android Studio.
 
 ## TO DO
 - Data persistance user's cash

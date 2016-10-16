@@ -22,5 +22,7 @@ public class GetterSetter {
     static int playerBlackjack = 0;
     static boolean isBlackJack = false;
     static boolean isBust = false;
+    static int iswin = 0;
+    static int islose = 0;
 
 }

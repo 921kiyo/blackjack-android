@@ -1,9 +1,9 @@
 # BlackJack
 Android mobile game App using canvas with Java where user can play black jack with an automated dealer in a mobile android phone/tablet.
 
-![Alt text](images/image1.PNG?raw=true "Optional Title")
-![Alt text](images/image2.PNG?raw=true "Optional Title")
-![Alt text](images/image3.PNG?raw=true "Optional Title")
+![Alt text](image/image1.PNG?raw=true "Optional Title")
+![Alt text](image/image2.PNG?raw=true "Optional Title")
+![Alt text](image/image3.PNG?raw=true "Optional Title")
 
 This project is the second solo project, a 7-day hackathon at [CodeClan](https://codeclan.com/) in Edinburgh.
 
